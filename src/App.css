@@ -1,0 +1,42 @@
+.container_home {
+  background-color: #fff;
+  max-width: 800px;
+  margin: 40px auto;
+
+  display: flex;
+  padding: 5px;
+}
+
+.container_esquerda {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 70%;
+}
+
+.container_direita {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container_input {
+  height: 34px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+
+  display: flex;
+  justify-center: center;
+  align-items: center;
+  padding: 2px;
+  margin-bottom: 20px;
+}
+
+.container_input input {
+  width: 90%;
+  border: none;
+  outline: none;
+}
