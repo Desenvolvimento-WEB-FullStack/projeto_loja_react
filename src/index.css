@@ -1,3 +1,50 @@
 body {
   background-color: #9b83cd;
 }
+
+.container_telas_iniciais {
+  max-width: 800px;
+  margin: 40px auto;
+  background: #fff;
+
+  display: flex;
+}
+
+.container_esquerda_telas_iniciais {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 55%;
+  background: #5f43b2;
+  color: #fff;
+}
+
+.container_direita_telas_iniciais {
+  width: 45%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* Estilos do input padrao aplicacão */
+
+.container_input {
+  height: 34px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+
+  display: flex;
+  justify-center: center;
+  align-items: center;
+  padding: 2px;
+  margin-bottom: 20px;
+  width: 70%;
+}
+
+.container_input input {
+  width: 90%;
+  border: none;
+  outline: none;
+}
