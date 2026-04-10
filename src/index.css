@@ -48,3 +48,43 @@ body {
   border: none;
   outline: none;
 }
+
+/* Estilos dos selects da aplicacao */
+
+.container_select {
+  padding: 3px;
+  margin-bottom: 20px;
+  width: 70%;
+}
+
+/*TODO: mudar cor do select */
+.container_select select {
+  height: 34px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  width: 100%;
+}
+
+/* botao padrao da aplicacao */
+
+.botao_telas_iniciais {
+  background: linear-gradient(90deg, #5f43b2 0%, #7a4df4 100%);
+  color: #fff;
+  border-radius: 8px;
+  height: 34px;
+  border: none;
+  width: 70%;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(95, 67, 178, 0.28);
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    filter 0.12s ease;
+  margin-bottom: 5px;
+}
+
+.botao_telas_iniciais:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 2px 8px rgba(95, 67, 178, 0.35);
+  filter: brightness(0.95);
+}

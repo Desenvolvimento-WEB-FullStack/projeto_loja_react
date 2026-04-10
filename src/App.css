@@ -1,24 +1,3 @@
-.botao_logar {
-  background: linear-gradient(90deg, #5f43b2 0%, #7a4df4 100%);
-  color: #fff;
-  border-radius: 8px;
-  height: 34px;
-  border: none;
-  width: 70%;
-  cursor: pointer;
-  box-shadow: 0 6px 14px rgba(95, 67, 178, 0.28);
-  transition:
-    transform 0.12s ease,
-    box-shadow 0.12s ease,
-    filter 0.12s ease;
-}
-
-.botao_logar:active {
-  transform: translateY(1px) scale(0.98);
-  box-shadow: 0 2px 8px rgba(95, 67, 178, 0.35);
-  filter: brightness(0.95);
-}
-
 .link_criar_conta {
   color: #5f43b2;
   text-decoration: none;
