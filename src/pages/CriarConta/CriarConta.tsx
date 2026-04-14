@@ -38,7 +38,9 @@ function CriarConta() {
       });
 
       if (resposta.ok === false) {
-        throw new Error();
+        const dadosError = await resposta.json();
+
+        throw new Error(dadosError.error);
       }
 
       Swal.fire({
@@ -47,11 +49,13 @@ function CriarConta() {
         text: "Agora, você poderá fazer o login e desfrutar da plataforma",
         confirmButtonText: "Tudo certo !",
       });
-    } catch {
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error ? error.message : "Erro desconhecido";
       Swal.fire({
         icon: "error",
         title: "Opps !",
-        text: "Nao foi possivel cadastrar o seu usuario no momento",
+        text: errorMessage,
       });
     }
   }
@@ -109,9 +113,7 @@ function CriarConta() {
             <option value="Ouro">Ouro - anúncios ilimitado</option>
           </select>
         </div>
-        <button type="submit" className="botao_telas_iniciais">
-          Cadastrar
-        </button>
+        <button className="botao_telas_iniciais">Cadastrar</button>
       </form>
     </div>
   );
