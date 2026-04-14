@@ -3,27 +3,79 @@ import { RiLockPasswordLine } from "react-icons/ri";
 
 import "./App.css";
 
+import { useState } from "react";
+import Swal from "sweetalert2";
+
 function App() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  async function realizarLogin(event: React.SubmitEvent) {
+    try {
+      event.preventDefault();
+
+      const resposta = await fetch("http://localhost:3000/auth/login", {
+        method: "post",
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (resposta.ok === false) {
+        throw new Error();
+      }
+
+      Swal.fire({
+        icon: "info",
+        title: "Usuário encontrado",
+        text: "Seu usuário foi encontrado e vc já será redirecionado",
+      });
+    } catch {
+      Swal.fire({
+        icon: "error",
+        title: "Erro ao realizar login",
+        text: "deu ruim",
+      });
+    }
+  }
+
   return (
     <div className="container_telas_iniciais">
       <div className="container_esquerda_telas_iniciais">
         <h2>Welcome back</h2>
         <p>you can sign in to acess with yout existing account.</p>
       </div>
-      <div className="container_direita_telas_iniciais">
+      <form
+        onSubmit={realizarLogin}
+        className="container_direita_telas_iniciais"
+      >
         <h1>Sign</h1>
 
         <div className="container_input">
           <CiUser color="#CCC" size={20} />
-          <input placeholder="User or Email" />
+          <input
+            placeholder="User or Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </div>
 
         <div className="container_input">
           <RiLockPasswordLine color="#CCC" size={20} />
-          <input placeholder="Password" />
+          <input
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </div>
 
-        <button className="botao_telas_iniciais">Sign In</button>
+        <button type="submit" className="botao_telas_iniciais">
+          Sign In
+        </button>
 
         <p>
           new here ?{" "}
@@ -31,7 +83,7 @@ function App() {
             Create an account
           </a>
         </p>
-      </div>
+      </form>
     </div>
   );
 }

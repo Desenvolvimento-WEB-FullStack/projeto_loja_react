@@ -8,6 +8,6 @@ import Contador from "./pages/Contador/Contador.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <CriarConta />
+    <App />
   </StrictMode>,
 );
