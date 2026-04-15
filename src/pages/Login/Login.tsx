@@ -1,14 +1,17 @@
 import { CiUser } from "react-icons/ci";
 import { RiLockPasswordLine } from "react-icons/ri";
 
-import "./App.css";
+import "./Login.css";
 
 import { useState } from "react";
 import Swal from "sweetalert2";
+import { Link, useNavigate } from "react-router";
 
-function App() {
+function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navegar = useNavigate();
 
   async function realizarLogin(event: React.SubmitEvent) {
     try {
@@ -34,6 +37,8 @@ function App() {
         title: "Usuário encontrado",
         text: "Seu usuário foi encontrado e vc já será redirecionado",
       });
+
+      navegar("anuncios");
     } catch {
       Swal.fire({
         icon: "error",
@@ -79,13 +84,13 @@ function App() {
 
         <p>
           new here ?{" "}
-          <a className="link_criar_conta" href="">
+          <Link className="link_criar_conta" to="/criar-conta">
             Create an account
-          </a>
+          </Link>
         </p>
       </form>
     </div>
   );
 }
 
-export default App;
+export default Login;

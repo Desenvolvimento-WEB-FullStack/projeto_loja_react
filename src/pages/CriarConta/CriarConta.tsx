@@ -5,8 +5,10 @@ import { MdOutlineMail } from "react-icons/md";
 import Swal from "sweetalert2";
 
 import "./CriarConta.css";
+import { useNavigate } from "react-router";
 
 function CriarConta() {
+  const navegar = useNavigate();
   // variaveis de estado
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
@@ -49,6 +51,8 @@ function CriarConta() {
         text: "Agora, você poderá fazer o login e desfrutar da plataforma",
         confirmButtonText: "Tudo certo !",
       });
+
+      navegar("/");
     } catch (error) {
       const errorMessage =
         error instanceof Error ? error.message : "Erro desconhecido";
