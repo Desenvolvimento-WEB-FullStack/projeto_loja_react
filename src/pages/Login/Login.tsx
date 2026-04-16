@@ -32,7 +32,7 @@ function Login() {
         throw new Error();
       }
 
-      Swal.fire({
+      await Swal.fire({
         icon: "info",
         title: "Usuário encontrado",
         text: "Seu usuário foi encontrado e vc já será redirecionado",
