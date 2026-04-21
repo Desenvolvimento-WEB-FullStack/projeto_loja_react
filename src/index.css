@@ -30,6 +30,11 @@ body {
 
 /* Estilos do input padrao aplicacão */
 
+.containers_inputs {
+  display: flex;
+  gap: 20px;
+}
+
 .container_input {
   height: 34px;
   border: 1px solid #ccc;

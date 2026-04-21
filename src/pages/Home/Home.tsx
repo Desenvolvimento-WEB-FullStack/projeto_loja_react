@@ -7,13 +7,6 @@ function Home() {
     return (valor / 4).toFixed(2);
   }
 
-  function formatarMensagem(anuncio) {
-    return `
-         Ola, eu tenho interesse no produto ${anuncio.nome} 
-         no de ${anuncio.valor} 
-   `;
-  }
-
   return (
     <div className="container_home">
       <div className="header_home_anuncios">
@@ -45,7 +38,7 @@ function Home() {
               </p>
               <a
                 className="botao_telas_iniciais card_info_produto_botao"
-                href={`https://wa.me/5585991811574?text=ola tenho interesse no produto ${anuncio.nome}  `}
+                href={`https://wa.me/5585991811574?text=ola tenho interesse no produto ${anuncio.nome}`}
                 //href={formatarMensagem(anuncio)}
                 target="_blank"
               >

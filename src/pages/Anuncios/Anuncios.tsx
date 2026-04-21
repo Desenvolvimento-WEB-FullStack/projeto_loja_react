@@ -1,5 +1,6 @@
 import anuncios from "../../mock/data";
 import "./Anuncios.css";
+import { Link } from "react-router";
 
 function Anuncios() {
   function formatarParaReal(valor: number) {
@@ -11,7 +12,16 @@ function Anuncios() {
 
   return (
     <div className="container_lista_anuncios">
-      <h1>Meus anúncios</h1>
+      <div className="header_lista_anuncios">
+        <h1>Meus anúncios</h1>
+
+        <Link
+          className="botao_telas_iniciais botao_novo_anuncio"
+          to="/anuncios/cadastro"
+        >
+          Novo anúncio
+        </Link>
+      </div>
 
       <table className="table_anuncios">
         <thead>

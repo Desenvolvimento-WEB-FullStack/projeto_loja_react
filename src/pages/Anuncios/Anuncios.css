@@ -10,6 +10,23 @@
   text-align: center;
 }
 
+.header_lista_anuncios {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.botao_novo_anuncio {
+  width: 180px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  margin-bottom: 0;
+}
+
 .table_anuncios {
   width: 100%;
   border-collapse: collapse;
@@ -33,4 +50,14 @@
 
 .table_anuncios tbody tr:nth-child(even) {
   background-color: #fff;
+}
+
+@media (max-width: 640px) {
+  .header_lista_anuncios {
+    flex-direction: column;
+  }
+
+  .botao_novo_anuncio {
+    width: 100%;
+  }
 }
