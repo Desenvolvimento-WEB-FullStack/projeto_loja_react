@@ -1,14 +1,28 @@
-import anuncios from "../../mock/data";
+import { useState, useEffect } from "react";
+
 import "./Anuncios.css";
 import { Link } from "react-router";
 
 function Anuncios() {
+  const [anuncios, setAnuncios] = useState([]);
+
   function formatarParaReal(valor: number) {
     return new Intl.NumberFormat("pt-br", {
       style: "currency",
       currency: "BRL",
     }).format(valor);
   }
+
+  async function buscarAnuncios() {
+    const resposta = await fetch("http://localhost:3000/anuncios");
+    const dados = await resposta.json();
+    setAnuncios(dados);
+  }
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    buscarAnuncios();
+  }, []);
 
   return (
     <div className="container_lista_anuncios">
@@ -40,11 +54,11 @@ function Anuncios() {
               <tr>
                 <td>{anuncio.id}</td>
                 <td>
-                  <img width={30} src={anuncio.imagem} />
+                  <img width={30} src={anuncio.url} />
                 </td>
                 <td>{anuncio.nome}</td>
-                <td>{formatarParaReal(anuncio.valor)}</td>
-                <td>{anuncio.situacao}</td>
+                <td>{formatarParaReal(anuncio.preco)}</td>
+                <td>{anuncio.status}</td>
                 <td></td>
               </tr>
             );

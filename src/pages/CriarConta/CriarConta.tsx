@@ -33,6 +33,7 @@ function CriarConta() {
           name: nome,
           password: senha,
           email: email,
+          plan: plano,
         }),
         headers: {
           "Content-Type": "application/json",

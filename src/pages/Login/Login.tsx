@@ -38,7 +38,7 @@ function Login() {
         text: "Seu usuário foi encontrado e vc já será redirecionado",
       });
 
-      navegar("anuncios");
+      navegar("/anuncios");
     } catch {
       Swal.fire({
         icon: "error",

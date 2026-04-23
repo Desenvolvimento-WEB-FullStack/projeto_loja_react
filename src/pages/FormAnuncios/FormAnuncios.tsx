@@ -5,6 +5,8 @@ import { PiPhone } from "react-icons/pi";
 import { BiPhotoAlbum } from "react-icons/bi";
 import { useState } from "react";
 
+<FormAnuncios />;
+
 function FormAnuncios() {
   const [nome, setNome] = useState("");
   const [valor, setValor] = useState("");
@@ -13,10 +15,30 @@ function FormAnuncios() {
   const [imagem, setImagem] = useState("");
   const [parcela, setParcela] = useState("");
 
+  function cadastrarAnuncio(e: React.SubmitEvent) {
+    e.preventDefault();
+
+    fetch("http://localhost:3000/anuncios", {
+      method: "post",
+      body: JSON.stringify({
+        nome: nome,
+        url: imagem,
+        preco: valor,
+        descricao: descricao,
+        parcelamento: parcela,
+        contato: contato,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
+
   return (
     <div className="container_form_anuncios">
       <div className="esquerda_container_form_anuncios">
         <h1>Novo anuncio</h1>
+
         <h2>Cadastre anúncio agora mesmo !</h2>
         <p>
           Preencha os campos abaixo para montar um anúncio completo com nome,
@@ -34,7 +56,10 @@ function FormAnuncios() {
         </div>
       </div>
 
-      <form className="direita_container_form_anuncios">
+      <form
+        className="direita_container_form_anuncios"
+        onSubmit={cadastrarAnuncio}
+      >
         <div className="containers_inputs">
           <div style={{ width: "50%" }}>
             <label>Nome</label>
@@ -106,6 +131,7 @@ function FormAnuncios() {
             <option value="12">12x</option>
           </select>
         </div>
+        <button type="submit">Cadastrar</button>
       </form>
     </div>
   );
