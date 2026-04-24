@@ -49,9 +49,9 @@ function Anuncios() {
           </tr>
         </thead>
         <tbody>
-          {anuncios.map((anuncio) => {
+          {anuncios.map((anuncio: any) => {
             return (
-              <tr>
+              <tr key={anuncio.id}>
                 <td>{anuncio.id}</td>
                 <td>
                   <img width={30} src={anuncio.url} />

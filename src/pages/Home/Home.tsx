@@ -1,11 +1,25 @@
 import { Link } from "react-router";
 import "./Home.css";
-import anuncios from "../../mock/data";
+
+import { useEffect, useState } from "react";
 
 function Home() {
-  function dividirValor(valor: number) {
-    return (valor / 4).toFixed(2);
+  const [anuncios, setAnuncios] = useState([]);
+
+  function dividirValor(valor: number, parcelamento: number = 1) {
+    return (valor / parcelamento).toFixed(2);
   }
+
+  async function buscarAnuncios() {
+    const resposta = await fetch("http://localhost:3000/anuncios");
+    const dados = await resposta.json();
+    setAnuncios(dados);
+  }
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    buscarAnuncios();
+  }, []);
 
   return (
     <div className="container_home">
@@ -21,24 +35,31 @@ function Home() {
         </Link>
       </div>
       <div className="container_cards_anuncios">
-        {anuncios.map((anuncio) => (
-          <div className="card_home_anuncios">
+        {anuncios.map((anuncio: any) => (
+          <div className="card_home_anuncios" key={anuncio.id}>
             <img
               className="imagem_card_home_anuncios"
-              src={anuncio.imagem}
+              src={anuncio.url}
               alt="imagem-de-bicicleta"
             />
 
             <div className="card_info_produto_home_anuncios">
               <h2>{anuncio.nome}</h2>
               <p>{anuncio.descricao}</p>
-              <span>{anuncio.valor}</span>
-              <p className="card_parcelamento_produto_home_anuncios">
-                Em até 4x de {dividirValor(anuncio.valor)} sem juros
-              </p>
+              <span>{anuncio.preco}</span>
+
+              {anuncio.parcelamento !== "" ? (
+                <p className="card_parcelamento_produto_home_anuncios">
+                  Em até {anuncio.parcelamento}x de{" "}
+                  {dividirValor(anuncio.preco, anuncio.parcelamento)} sem juros
+                </p>
+              ) : (
+                "Só aceito a vista"
+              )}
+
               <a
                 className="botao_telas_iniciais card_info_produto_botao"
-                href={`https://wa.me/5585991811574?text=ola tenho interesse no produto ${anuncio.nome}`}
+                href={`https://wa.me/${anuncio.contato}?text=ola tenho interesse no produto ${anuncio.nome}`}
                 //href={formatarMensagem(anuncio)}
                 target="_blank"
               >
