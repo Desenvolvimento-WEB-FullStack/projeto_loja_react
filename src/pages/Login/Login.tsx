@@ -29,7 +29,8 @@ function Login() {
       });
 
       if (resposta.ok === false) {
-        throw new Error();
+        const dados = await resposta.json();
+        throw new Error(dados.error);
       }
 
       await Swal.fire({
@@ -39,11 +40,11 @@ function Login() {
       });
 
       navegar("/anuncios");
-    } catch {
+    } catch (error) {
       Swal.fire({
         icon: "error",
         title: "Erro ao realizar login",
-        text: "deu ruim",
+        text: error.message,
       });
     }
   }
@@ -51,21 +52,23 @@ function Login() {
   return (
     <div className="container_telas_iniciais">
       <div className="container_esquerda_telas_iniciais">
-        <h2>Welcome back</h2>
-        <p>you can sign in to acess with yout existing account.</p>
+        <h2>Bem vindo</h2>
+        <p>Você pode acessar com sua conta existente..</p>
       </div>
       <form
         onSubmit={realizarLogin}
         className="container_direita_telas_iniciais"
       >
-        <h1>Sign</h1>
+        <h1>Login</h1>
 
         <div className="container_input">
           <CiUser color="#CCC" size={20} />
           <input
-            placeholder="User or Email"
+            placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
+            type="email"
           />
         </div>
 
@@ -75,17 +78,19 @@ function Login() {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
+            type="password"
           />
         </div>
 
         <button type="submit" className="botao_telas_iniciais">
-          Sign In
+          Logar
         </button>
 
         <p>
-          new here ?{" "}
+          Novo aqui ?{" "}
           <Link className="link_criar_conta" to="/criar-conta">
-            Create an account
+            Criar uma conta
           </Link>
         </p>
       </form>

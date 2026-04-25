@@ -46,6 +46,7 @@ body {
   padding: 2px;
   margin-bottom: 20px;
   width: 70%;
+  background: #fff;
 }
 
 .container_input input {
@@ -92,4 +93,15 @@ body {
   transform: translateY(1px) scale(0.98);
   box-shadow: 0 2px 8px rgba(95, 67, 178, 0.35);
   filter: brightness(0.95);
+}
+
+@media (max-width: 600px) {
+  .container_telas_iniciais {
+    flex-direction: column;
+  }
+
+  .container_esquerda_telas_iniciais,
+  .container_direita_telas_iniciais {
+    width: 100%;
+  }
 }
